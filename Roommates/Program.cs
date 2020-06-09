@@ -53,7 +53,19 @@ namespace Roommates
             bathroom.MaxOccupancy = 5;
             roomRepo.Update(bathroom);
             Console.WriteLine("updated successfully");
-            
+
+
+            RoommateRepository roommateRepo = new RoommateRepository(CONNECTION_STRING);
+
+            List<Roommate> roommates = roommateRepo.GetAll();
+
+            foreach(Roommate roommate in roommates)
+            {
+                Console.WriteLine(@$"First Name: {roommate.Firstname}
+                Last Name: {roommate.Lastname}
+                Rent Portion: {roommate.RentPortion}
+                Move In Date: {roommate.MovedInDate}");
+            }
         }
     }
 }
