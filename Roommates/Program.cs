@@ -73,8 +73,18 @@ namespace Roommates
                               Move In Date { roommate1.MovedInDate.AddDays(-1)}
                               Rent Portion {roommate1.RentPortion}
                               Room Name: {room1.Name}
-                              Maximum occupancy of room {room1.MaxOccupancy}
-                              ");
+                              Maximum occupancy of room {room1.MaxOccupancy}");
+            Console.WriteLine("___________");
+            List<Roommate> roommate2 = roommateRepo.GetAllWithRoom(2);
+
+            foreach (Roommate rm in roommateRepo.GetAllWithRoom(2))
+            {
+                Console.WriteLine(@$"First Name: {rm.Firstname}
+                Last Name: {rm.Lastname}
+                Rent Portion: {rm.RentPortion}
+                Move In Date: {rm.MovedInDate}");
+            }
+            Console.WriteLine("___________");
 
         }
     }
