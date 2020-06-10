@@ -66,6 +66,9 @@ namespace Roommates
                 Rent Portion: {roommate.RentPortion}
                 Move In Date: {roommate.MovedInDate}");
             }
+
+            roommateRepo.GetById(1);
+
         }
     }
 }
