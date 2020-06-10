@@ -66,8 +66,15 @@ namespace Roommates
                 Rent Portion: {roommate.RentPortion}
                 Move In Date: {roommate.MovedInDate}");
             }
-
-            roommateRepo.GetById(1);
+            Room room1 = roommateRepo.GetById(1).Room;
+            Roommate roommate1 = roommateRepo.GetById(1);
+            Console.WriteLine(@$"Roommate First Name: {roommate1.Firstname} 
+                              Last Name: {roommate1.Lastname}
+                              Move In Date { roommate1.MovedInDate.AddDays(-1)}
+                              Rent Portion {roommate1.RentPortion}
+                              Room Name: {room1.Name}
+                              Maximum occupancy of room {room1.MaxOccupancy}
+                              ");
 
         }
     }

@@ -80,18 +80,17 @@ namespace Roommates.Repositories
                     cmd.Parameters.AddWithValue("@roomId", id);
                     SqlDataReader reader = cmd.ExecuteReader();
                     Roommate newRoommate = null;
-                    while (reader.Read())
+                    if (reader.Read())
                     {
-                        int id_value = reader.GetInt32(reader.GetOrdinal("roommate.Id"));
-                        string firstName_value = reader.GetString(reader.GetOrdinal("roommate.FirstName"));
-                        string lastName_value = reader.GetString(reader.GetOrdinal("roommate.LastName"));
-                        int rentPortion_value = reader.GetInt32(reader.GetOrdinal("roommate.RentPortion"));
-                        DateTime moveInDate_value = reader.GetDateTime(reader.GetOrdinal("roommate.MoveInDate"));
-                        int roomId_value = reader.GetInt32(reader.GetOrdinal("room.RoomId"));
+                        int id_value = reader.GetInt32(reader.GetOrdinal("Id"));
+                        string firstName_value = reader.GetString(reader.GetOrdinal("FirstName"));
+                        string lastName_value = reader.GetString(reader.GetOrdinal("LastName"));
+                        int rentPortion_value = reader.GetInt32(reader.GetOrdinal("RentPortion"));
+                        DateTime moveInDate_value = reader.GetDateTime(reader.GetOrdinal("MoveInDate"));
 
-                        int roomateId_value = reader.GetInt32(reader.GetOrdinal("room.Id"));
-                        string roomName_value = reader.GetString(reader.GetOrdinal("room.Name"));
-                        int roomMaxOccupancy_value = reader.GetInt32(reader.GetOrdinal("room.MaxOccupancy"));
+                        int roomateId_value = reader.GetInt32(reader.GetOrdinal("Id"));
+                        string roomName_value = reader.GetString(reader.GetOrdinal("Name"));
+                        int roomMaxOccupancy_value = reader.GetInt32(reader.GetOrdinal("MaxOccupancy"));
                         newRoommate = new Roommate()
                         {
                             Id = id_value,
@@ -101,7 +100,7 @@ namespace Roommates.Repositories
                             MovedInDate = moveInDate_value,
                             Room = new Room()
                             {
-                                Id = roomId_value,
+                                Id = roomateId_value,
                                 Name = roomName_value,
                                 MaxOccupancy = roomMaxOccupancy_value
                             }
